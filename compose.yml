@@ -1,0 +1,17 @@
+services:
+    redis:
+        image: redis
+        container_name: redis
+        ports:
+            - 6379:6379
+        #command:
+        #    - '--loglevel debug'
+        # logging:
+        #     driver: fluentd
+        #     options:
+        #         tag: redis
+        logging:
+            driver: "json-file"
+            options:
+                max-file: ${LOG_EXPIRE}
+                max-size: ${LOG_SEGMENT}
